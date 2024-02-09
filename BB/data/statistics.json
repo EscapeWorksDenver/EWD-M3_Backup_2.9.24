@@ -1,0 +1,195 @@
+{
+  "StoryID": "BB",
+  "TotalSessions": 2182,
+  "TotalPlayers": 133,
+  "TotalSuccess": 1281,
+  "SuccessRate": 0.59,
+  "AverageCluesRemaining": 1,
+  "AverageCluesUsed": 6,
+  "AveragePlayers": 1,
+  "AverageScore": 10,
+  "AverageTimeRemaining": 318623,
+  "AverageTimeUsed": 0,
+  "Objectives": {
+    "1": {
+      "ID": 1,
+      "Name": "Scratchy Compass",
+      "AverageTimeRemaining": 2867166,
+      "AverageCompletionRate": 0.96,
+      "AverageCluesRequired": 0.35,
+      "TotalTime": 5992378412,
+      "TotalCompleted": 2090,
+      "TotalCluesRequired": 756
+    },
+    "2": {
+      "ID": 2,
+      "Name": "Message In A Bottle",
+      "AverageTimeRemaining": 2866492,
+      "AverageCompletionRate": 0.94,
+      "AverageCluesRequired": 0.08,
+      "TotalTime": 5907840856,
+      "TotalCompleted": 2061,
+      "TotalCluesRequired": 171
+    },
+    "3": {
+      "ID": 3,
+      "Name": "Fishing Pole",
+      "AverageTimeRemaining": 2839316,
+      "AverageCompletionRate": 0.96,
+      "AverageCluesRequired": 0.04,
+      "TotalTime": 5965404732,
+      "TotalCompleted": 2101,
+      "TotalCluesRequired": 87
+    },
+    "4": {
+      "ID": 4,
+      "Name": "Crossword Puzzle",
+      "AverageTimeRemaining": 2004705,
+      "AverageCompletionRate": 0.95,
+      "AverageCluesRequired": 0.38,
+      "TotalTime": 4141722559,
+      "TotalCompleted": 2066,
+      "TotalCluesRequired": 839
+    },
+    "5": {
+      "ID": 5,
+      "Name": "Islands",
+      "AverageTimeRemaining": 1940965,
+      "AverageCompletionRate": 0.95,
+      "AverageCluesRequired": 0.35,
+      "TotalTime": 4011976040,
+      "TotalCompleted": 2067,
+      "TotalCluesRequired": 755
+    },
+    "6": {
+      "ID": 6,
+      "Name": "Knots",
+      "AverageTimeRemaining": 1881092,
+      "AverageCompletionRate": 0.93,
+      "AverageCluesRequired": 0.45,
+      "TotalTime": 3799807618,
+      "TotalCompleted": 2020,
+      "TotalCluesRequired": 984
+    },
+    "7": {
+      "ID": 7,
+      "Name": "Flags",
+      "AverageTimeRemaining": 1716986,
+      "AverageCompletionRate": 0.23,
+      "AverageCluesRequired": 0.14,
+      "TotalTime": 853342408,
+      "TotalCompleted": 497,
+      "TotalCluesRequired": 304
+    },
+    "8": {
+      "ID": 8,
+      "Name": "Cypher Wheel",
+      "AverageTimeRemaining": 1228463,
+      "AverageCompletionRate": 0.88,
+      "AverageCluesRequired": 0.52,
+      "TotalTime": 2367249089,
+      "TotalCompleted": 1927,
+      "TotalCluesRequired": 1144
+    },
+    "9": {
+      "ID": 9,
+      "Name": "SHIPWRECK",
+      "AverageTimeRemaining": 1042894,
+      "AverageCompletionRate": 0.73,
+      "AverageCluesRequired": 0.4,
+      "TotalTime": 1669674288,
+      "TotalCompleted": 1601,
+      "TotalCluesRequired": 865
+    },
+    "10": {
+      "ID": 10,
+      "Name": "Jewels",
+      "AverageTimeRemaining": 855339,
+      "AverageCompletionRate": 0.58,
+      "AverageCluesRequired": 0.21,
+      "TotalTime": 1087137027,
+      "TotalCompleted": 1271,
+      "TotalCluesRequired": 469
+    },
+    "11": {
+      "ID": 11,
+      "Name": "Sandbox",
+      "AverageTimeRemaining": 879584,
+      "AverageCompletionRate": 0.66,
+      "AverageCluesRequired": 0.18,
+      "TotalTime": 1259565178,
+      "TotalCompleted": 1432,
+      "TotalCluesRequired": 401
+    },
+    "12": {
+      "ID": 12,
+      "Name": "SYmbol Wheel",
+      "AverageTimeRemaining": 715894,
+      "AverageCompletionRate": 0.47,
+      "AverageCluesRequired": 0.41,
+      "TotalTime": 728781033,
+      "TotalCompleted": 1018,
+      "TotalCluesRequired": 901
+    },
+    "13": {
+      "ID": 13,
+      "Name": "Map Puzzle",
+      "AverageTimeRemaining": 689529,
+      "AverageCompletionRate": 0.3,
+      "AverageCluesRequired": 0.0,
+      "TotalTime": 456468839,
+      "TotalCompleted": 662,
+      "TotalCluesRequired": 2
+    },
+    "14": {
+      "ID": 14,
+      "Name": "Sail Ship",
+      "AverageTimeRemaining": 518489,
+      "AverageCompletionRate": 0.04,
+      "AverageCluesRequired": 0.37,
+      "TotalTime": 39923717,
+      "TotalCompleted": 77,
+      "TotalCluesRequired": 812
+    },
+    "15": {
+      "ID": 15,
+      "Name": "Open the Brig Door",
+      "AverageTimeRemaining": 2863497,
+      "AverageCompletionRate": 0.9,
+      "AverageCluesRequired": 0.0,
+      "TotalTime": 5632499234,
+      "TotalCompleted": 1967,
+      "TotalCluesRequired": 0
+    },
+    "16": {
+      "ID": 16,
+      "Name": "3rd Room Door - Blow out candles  (20 left)",
+      "AverageTimeRemaining": 1289111,
+      "AverageCompletionRate": 0.11,
+      "AverageCluesRequired": 0.05,
+      "TotalTime": 297784864,
+      "TotalCompleted": 231,
+      "TotalCluesRequired": 103
+    },
+    "18": {
+      "ID": 18,
+      "Name": "X Marks the Spot - Get the Peg Leg (15 left)",
+      "AverageTimeRemaining": 1027655,
+      "AverageCompletionRate": 0.1,
+      "AverageCluesRequired": 0.02,
+      "TotalTime": 215807696,
+      "TotalCompleted": 210,
+      "TotalCluesRequired": 46
+    },
+    "17": {
+      "ID": 17,
+      "Name": "Game - Rescue Crewmates ((White shirt: raft, Brown shirt: sunken, Gray shirt: circling)) (5 left)",
+      "AverageTimeRemaining": 468193,
+      "AverageCompletionRate": 0.06,
+      "AverageCluesRequired": 0.02,
+      "TotalTime": 57587754,
+      "TotalCompleted": 123,
+      "TotalCluesRequired": 34
+    }
+  }
+}

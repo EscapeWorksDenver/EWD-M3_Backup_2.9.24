@@ -1,0 +1,165 @@
+{
+  "StoryID": "SBTF",
+  "TotalSessions": 1570,
+  "TotalPlayers": 107,
+  "TotalSuccess": 957,
+  "SuccessRate": 0.61,
+  "AverageCluesRemaining": 0,
+  "AverageCluesUsed": 9,
+  "AveragePlayers": 1,
+  "AverageScore": 12,
+  "AverageTimeRemaining": 384365,
+  "AverageTimeUsed": 0,
+  "Objectives": {
+    "1": {
+      "ID": 1,
+      "Name": "Flower Math Riddle - 250",
+      "AverageTimeRemaining": 2816623,
+      "AverageCompletionRate": 0.98,
+      "AverageCluesRequired": 0.83,
+      "TotalTime": 4337599520,
+      "TotalCompleted": 1540,
+      "TotalCluesRequired": 1308
+    },
+    "2": {
+      "ID": 2,
+      "Name": "Flower Poem - 439-5768",
+      "AverageTimeRemaining": 2457148,
+      "AverageCompletionRate": 0.85,
+      "AverageCluesRequired": 0.66,
+      "TotalTime": 3290121536,
+      "TotalCompleted": 1339,
+      "TotalCluesRequired": 1031
+    },
+    "3": {
+      "ID": 3,
+      "Name": "Barrel to Bench",
+      "AverageTimeRemaining": 1930176,
+      "AverageCompletionRate": 0.96,
+      "AverageCluesRequired": 0.47,
+      "TotalTime": 2914565850,
+      "TotalCompleted": 1510,
+      "TotalCluesRequired": 731
+    },
+    "4": {
+      "ID": 4,
+      "Name": "Dartboard/Vent",
+      "AverageTimeRemaining": 1946047,
+      "AverageCompletionRate": 0.96,
+      "AverageCluesRequired": 0.13,
+      "TotalTime": 2936585093,
+      "TotalCompleted": 1509,
+      "TotalCluesRequired": 200
+    },
+    "5": {
+      "ID": 5,
+      "Name": "Gears - 78 Left 28 Right 73 Left",
+      "AverageTimeRemaining": 1281305,
+      "AverageCompletionRate": 0.91,
+      "AverageCluesRequired": 0.69,
+      "TotalTime": 1837391870,
+      "TotalCompleted": 1434,
+      "TotalCluesRequired": 1076
+    },
+    "6": {
+      "ID": 6,
+      "Name": "Drink Menu - 658",
+      "AverageTimeRemaining": 1081171,
+      "AverageCompletionRate": 0.91,
+      "AverageCluesRequired": 0.86,
+      "TotalTime": 1547156991,
+      "TotalCompleted": 1431,
+      "TotalCluesRequired": 1357
+    },
+    "7": {
+      "ID": 7,
+      "Name": "Table Symbols - Ashtray to Flame/Birdcage to Feather/Lucky to Clover/Black Flower to Flower",
+      "AverageTimeRemaining": 868520,
+      "AverageCompletionRate": 0.8,
+      "AverageCluesRequired": 0.7,
+      "TotalTime": 1096941773,
+      "TotalCompleted": 1263,
+      "TotalCluesRequired": 1099
+    },
+    "8": {
+      "ID": 8,
+      "Name": "Secret Door - 4 Buttons (Vent, Cabinet, Register, Safe)",
+      "AverageTimeRemaining": 637444,
+      "AverageCompletionRate": 0.72,
+      "AverageCluesRequired": 0.21,
+      "TotalTime": 715850562,
+      "TotalCompleted": 1123,
+      "TotalCluesRequired": 336
+    },
+    "9": {
+      "ID": 9,
+      "Name": "Boiler Knobs",
+      "AverageTimeRemaining": 547582,
+      "AverageCompletionRate": 0.51,
+      "AverageCluesRequired": 0.28,
+      "TotalTime": 440804140,
+      "TotalCompleted": 805,
+      "TotalCluesRequired": 438
+    },
+    "10": {
+      "ID": 10,
+      "Name": "Levers - Up Down Down Middle",
+      "AverageTimeRemaining": 488983,
+      "AverageCompletionRate": 0.19,
+      "AverageCluesRequired": 0.18,
+      "TotalTime": 148161870,
+      "TotalCompleted": 303,
+      "TotalCluesRequired": 281
+    },
+    "11": {
+      "ID": 11,
+      "Name": "Welcome!",
+      "AverageTimeRemaining": 3068146,
+      "AverageCompletionRate": 0.85,
+      "AverageCluesRequired": 0.77,
+      "TotalTime": 4071429837,
+      "TotalCompleted": 1327,
+      "TotalCluesRequired": 1209
+    },
+    "12": {
+      "ID": 12,
+      "Name": "Knock Complete - Enter Speakeasy",
+      "AverageTimeRemaining": 2350937,
+      "AverageCompletionRate": 0.32,
+      "AverageCluesRequired": 0.25,
+      "TotalTime": 1194276142,
+      "TotalCompleted": 508,
+      "TotalCluesRequired": 398
+    },
+    "13": {
+      "ID": 13,
+      "Name": "Safe Cipher - 78 + 73 to hand pointing left, 28 to hand pointing right",
+      "AverageTimeRemaining": 1108764,
+      "AverageCompletionRate": 0.05,
+      "AverageCluesRequired": 0.04,
+      "TotalTime": 82048566,
+      "TotalCompleted": 74,
+      "TotalCluesRequired": 61
+    },
+    "14": {
+      "ID": 14,
+      "Name": "Shopping List - 4395768 (50 left)",
+      "AverageTimeRemaining": 2731132,
+      "AverageCompletionRate": 0.13,
+      "AverageCluesRequired": 0.06,
+      "TotalTime": 548957582,
+      "TotalCompleted": 201,
+      "TotalCluesRequired": 102
+    },
+    "15": {
+      "ID": 15,
+      "Name": "Knocks (45 left)",
+      "AverageTimeRemaining": 2670613,
+      "AverageCompletionRate": 0.13,
+      "AverageCluesRequired": 0.04,
+      "TotalTime": 536793348,
+      "TotalCompleted": 201,
+      "TotalCluesRequired": 57
+    }
+  }
+}

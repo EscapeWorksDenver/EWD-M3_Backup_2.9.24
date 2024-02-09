@@ -1,0 +1,352 @@
+<story>
+	<id>VH</id>
+	<name>Vampire Hunter</name>
+	<description />
+	<active>true</active>
+	<type>Standard</type>
+	<color>0 0 0 255</color>
+	<scoring>Time</scoring>
+	<timebonus>0</timebonus>
+	<objectives-count-visible>true</objectives-count-visible>
+	<duration>60</duration>
+	<players>10</players>
+	<difficulty>1</difficulty>
+	<teamname>Hunters</teamname>
+	<chime ontext="true" onimage="true" onaudio="false" onvideo="false">sound/chime.mp3</chime>
+	<game-master>
+		<custom-text>true</custom-text>
+	</game-master>
+	<audioducking>false</audioducking>
+	<externalid />
+	<marquee>stories/VH/m3-marquee.jpg</marquee>
+	<poster>stories/VH/m3-poster.jpg</poster>
+	<styleinfo>
+		<base>standard</base>
+		<basecolor>0 0 0 255</basecolor>
+		<orientation>90</orientation>
+		<background>stories/VH/gothicimage.jpg</background>
+		<backgroundlinkedtotimer>false</backgroundlinkedtotimer>
+		<clueicon>images/clue.png</clueicon>
+		<clueusedicon>images/clue-used.png</clueusedicon>
+		<timer hidewhenidle="true" hidewhenzero="true" font="" fontbold="false" fontitalic="false" fontshadow="true" left="0" top="0" size="480" color="255 255 255 255" override="true" visible="false" />
+		<messages font="Book Antiqua" fontbold="false" fontitalic="false" fontshadow="true" left="100" top="300" size="60" color="241 196 15 255" override="false" visible="true" />
+		<clues left="0" top="0" override="true" visible="false" />
+		<customcss />
+		<customhtml />
+	</styleinfo>
+	<prologue>false</prologue>
+	<epilogue>false</epilogue>
+	<sound-levels>
+		<level id="Master" base="1" level="1" mute="false" />
+		<level id="Chimes" base="1" level="1" mute="false" />
+		<level id="Sounds" base="1" level="1" mute="false" />
+		<level id="Videos" base="1" level="1" mute="false" />
+		<level id="Music" base="0.52" level="0.52" mute="false" />
+		<level id="Backgrounds" base="1" level="1" mute="false" />
+	</sound-levels>
+	<clues total="0">
+		<penalty>None</penalty>
+		<penaltyvalue>0</penaltyvalue>
+		<bonus>None</bonus>
+		<bonusvalue>0</bonusvalue>
+		<duration>999</duration>
+	</clues>
+	<game-modes />
+	<rooms>
+		<room id="1" name="mos" />
+		<room id="2" name="castle" />
+	</rooms>
+	<languages>
+		<language id="0">English</language>
+		<language id="1" />
+		<language id="2" />
+		<language id="3" />
+		<language id="4" />
+	</languages>
+	<music>
+		<track name="Castle Theme" source="stories/VH/Lady Dimitrescu Music 1 Hour Version  Resident Evil 8_ Village (mp3cut.net) (1).mp3" volume="0.92" />
+		<track name="Graveyard/Mauso Theme" source="stories/VH/Cemetery  D&amp;DTTRPG Music  1 Hour (mp3cut.net).mp3" volume="0.89" />
+	</music>
+	<requiredscreens />
+	<reset>
+		<item id="1" name="Power Cycle" source="" />
+	</reset>
+	<devices />
+	<objectives>
+		<objective id="1" rank="Primary" name="Rope Puzzle - Untangle ropes and slot in cross" event="" score="0" color="0 0 255 255" collapsible="true" visible="true">
+			<description />
+			<narrative />
+			<tags />
+			<clues>
+				<clue id="3" name="Ropes" type="Text" source="" score="0" weight="1">
+					<text>Move the circles around on the bottom to untangle the ropes!</text>
+					<textalt1 />
+					<textalt2 />
+					<textalt3 />
+					<textalt4 />
+				</clue>
+				<clue id="4" name="Cross" type="Text" source="" score="0" weight="1">
+					<text>Place that cross into the slot on the bottom!</text>
+					<textalt1 />
+					<textalt2 />
+					<textalt3 />
+					<textalt4 />
+				</clue>
+			</clues>
+		</objective>
+		<objective id="2" rank="Primary" name="Tombstone - Touch symbols with the dagger" event="" score="0" color="0 0 255 255" collapsible="true" visible="true">
+			<description />
+			<narrative />
+			<tags />
+			<clues>
+				<clue id="2" name="Symbols" type="Text" source="" score="0" weight="1">
+					<text>Look at the symbols on the wand! Touch the same symbols on the tombstone as they appear on the dagger!</text>
+					<textalt1 />
+					<textalt2 />
+					<textalt3 />
+					<textalt4 />
+				</clue>
+				<clue id="6" name="Order" type="Text" source="" score="0" weight="1">
+					<text>Two symbols are on each side of the blade! The arrows will tell you to the symbols go from bottom to top!</text>
+					<textalt1 />
+					<textalt2 />
+					<textalt3 />
+					<textalt4 />
+				</clue>
+			</clues>
+		</objective>
+		<objective id="3" rank="Primary" name="Hunter Chest - Place items - Hammer, Journal, Amulet, Flask" event="" score="0" color="0 0 255 255" collapsible="true" visible="true">
+			<description />
+			<narrative />
+			<tags />
+			<clues>
+				<clue id="5" name="Items" type="Text" source="" score="0" weight="1">
+					<text>4 items need to placed in the chest! Match the shapes of the items with the outline in the chest!</text>
+					<textalt1 />
+					<textalt2 />
+					<textalt3 />
+					<textalt4 />
+				</clue>
+			</clues>
+		</objective>
+		<objective id="4" rank="Primary" name="Bats - Shoot bats with crossbow" event="" score="0" color="255 255 0 255" collapsible="true" visible="true">
+			<description />
+			<narrative />
+			<tags />
+			<clues>
+				<clue id="1" name="Bolts" type="Text" source="" score="0" weight="1">
+					<text>Insert those bolts into the crossbow chamber!</text>
+					<textalt1 />
+					<textalt2 />
+					<textalt3 />
+					<textalt4 />
+				</clue>
+				<clue id="7" name="Keep shooting" type="Text" source="" score="0" weight="1">
+					<text>The eyes of the bats around the room will randomly light up! Shoot them with the crossbow as they do!</text>
+					<textalt1 />
+					<textalt2 />
+					<textalt3 />
+					<textalt4 />
+				</clue>
+			</clues>
+		</objective>
+		<objective id="5" rank="Secondary" name="Castle - Open castle door" event="" score="0" color="255 255 0 255" collapsible="true" visible="true">
+			<description />
+			<narrative />
+			<tags />
+			<clues />
+		</objective>
+		<objective id="6" rank="Primary" name="Glass Tower - M A R Y" event="" score="0" color="255 255 0 255" collapsible="true" visible="true">
+			<description />
+			<narrative />
+			<tags />
+			<clues>
+				<clue id="8" name="Name" type="Text" source="" score="0" weight="1">
+					<text>The name of the vampire will help you here! Check the nameplate on the coffin!</text>
+					<textalt1 />
+					<textalt2 />
+					<textalt3 />
+					<textalt4 />
+				</clue>
+				<clue id="9" name="Rotate" type="Text" source="" score="0" weight="1">
+					<text>Rotate the rings of the glass tower to set the letters on each the arrow!</text>
+					<textalt1 />
+					<textalt2 />
+					<textalt3 />
+					<textalt4 />
+				</clue>
+			</clues>
+		</objective>
+		<objective id="7" rank="Primary" name="Stained Glass - Purple, Light Blue, Orange, Green, Pink" event="" score="0" color="255 255 0 255" collapsible="true" visible="true">
+			<description />
+			<narrative />
+			<tags />
+			<clues>
+				<clue id="10" name="Symbols" type="Text" source="" score="0" weight="1">
+					<text>5 symbols are hidden around the room! Find them all and note their colors!</text>
+					<textalt1 />
+					<textalt2 />
+					<textalt3 />
+					<textalt4 />
+				</clue>
+				<clue id="11" name="Cross" type="Text" source="" score="0" weight="1">
+					<text>Touch the colored ends of the cross to the symbols on the stained glass window to change that part of it to that color! Keep in mind, you can mix colors!</text>
+					<textalt1 />
+					<textalt2 />
+					<textalt3 />
+					<textalt4 />
+				</clue>
+				<clue id="12" name="Howto" type="Text" source="" score="0" weight="1">
+					<text>The colored ends of the cross will add the color to that part of the glass. Touch the symbol with the middle of the cross to clear it!</text>
+					<textalt1 />
+					<textalt2 />
+					<textalt3 />
+					<textalt4 />
+				</clue>
+			</clues>
+		</objective>
+		<objective id="8" rank="Primary" name="Offering - Place two Idols" event="" score="0" color="255 0 0 255" collapsible="true" visible="true">
+			<description />
+			<narrative />
+			<tags />
+			<clues>
+				<clue id="13" name="Idols" type="Text" source="" score="0" weight="1">
+					<text>Place those two idols inside the compartment and close the doors back up!</text>
+					<textalt1 />
+					<textalt2 />
+					<textalt3 />
+					<textalt4 />
+				</clue>
+			</clues>
+		</objective>
+		<objective id="9" rank="Primary" name="Faces - Blue Purple White Yellow - Green Cyan Red Orange" event="" score="0" color="255 0 0 255" collapsible="true" visible="true">
+			<description />
+			<narrative />
+			<tags />
+			<clues />
+		</objective>
+		<objective id="10" rank="Primary" name="Puzzle Pieces - Complete the cross" event="" score="0" color="255 0 0 255" collapsible="true" visible="true">
+			<description />
+			<narrative />
+			<tags />
+			<clues>
+				<clue id="14" name="Help" type="Text" source="" score="0" weight="1">
+					<text>Complete the space on top of the coffin with those broken puzzle pieces!</text>
+					<textalt1 />
+					<textalt2 />
+					<textalt3 />
+					<textalt4 />
+				</clue>
+			</clues>
+		</objective>
+		<objective id="11" rank="Primary" name="Kill Vampire - Place Stake" event="" score="0" color="255 0 0 255" collapsible="true" visible="true">
+			<description />
+			<narrative />
+			<tags />
+			<clues>
+				<clue id="15" name="Idiot" type="Text" source="" score="0" weight="1">
+					<text>Put the stake into her heart!</text>
+					<textalt1 />
+					<textalt2 />
+					<textalt3 />
+					<textalt4 />
+				</clue>
+			</clues>
+		</objective>
+	</objectives>
+	<events>
+		<event id="1" name="how to change display" type="Single" mode="All" color="0 0 0 255" gmvisible="false" active="true">
+			<tags />
+			<conditions>
+				<condition type="TimeRemaining" name="" operator="=" tag="" value="0" />
+				<condition type="PercentComplete" name="" operator="=" tag="" value="0" />
+			</conditions>
+			<actions>
+				<action type="SetBackground" screen="Countdown" channel="0" source="images/crt.png" />
+			</actions>
+		</event>
+		<event id="2" name="hint counter" type="Single" mode="All" color="0 0 0 255" gmvisible="false" active="true">
+			<tags />
+			<conditions>
+				<condition type="ClueSent" name="" operator="=" tag="" value="0" />
+			</conditions>
+			<actions>
+				<action type="SetVariable" name="hint counter" value="++" />
+			</actions>
+		</event>
+		<event id="3" name="Room On" type="Manual" mode="Any" color="127 140 141 255" gmvisible="true" active="true">
+			<tags />
+			<conditions>
+				<condition type="StoryState" name="" operator="=" tag="Idle" value="0" />
+				<condition type="StoryState" name="" operator="=" tag="Paused" value="0" />
+			</conditions>
+			<actions />
+		</event>
+		<event id="4" name="Room Off" type="Manual" mode="Any" color="127 140 141 255" gmvisible="true" active="true">
+			<tags />
+			<conditions>
+				<condition type="StoryState" name="" operator="=" tag="Idle" value="0" />
+				<condition type="StoryState" name="" operator="=" tag="Paused" value="0" />
+			</conditions>
+			<actions />
+		</event>
+		<event id="5" name="Running Sountrack" type="Recurring" mode="All" color="0 0 0 255" gmvisible="false" active="true">
+			<tags />
+			<conditions>
+				<condition type="StoryState" name="" operator="=" tag="Running" value="0" />
+			</conditions>
+			<actions>
+				<action type="SetMusic" value="Graveyard/Mauso Theme" screen="Countdown" channel="0" volume="1" />
+				<action type="MusicPlay" screen="Countdown" channel="0" />
+			</actions>
+		</event>
+		<event id="6" name="+5 Minutes" type="Single" mode="All" color="46 204 113 255" gmvisible="true" active="true">
+			<tags />
+			<conditions />
+			<actions>
+				<action type="AdjustTime" format="Add" value="300000" />
+			</actions>
+		</event>
+		<event id="7" name="-5 Minutes" type="Single" mode="All" color="192 57 43 255" gmvisible="true" active="true">
+			<tags />
+			<conditions />
+			<actions>
+				<action type="AdjustTime" format="Subtract" value="300000" />
+			</actions>
+		</event>
+		<event id="8" name="Start Game w/ Button" type="Single" mode="All" color="0 0 0 255" gmvisible="false" active="true">
+			<tags />
+			<conditions />
+			<actions />
+		</event>
+		<event id="9" name="Game Ends on Vamp Stabbed" type="Single" mode="All" color="0 0 0 255" gmvisible="false" active="true">
+			<tags />
+			<conditions />
+			<actions>
+				<action type="EndSessionSuccess" value="" />
+			</actions>
+		</event>
+		<event id="10" name="Music Change" type="Single" mode="All" color="0 0 0 255" gmvisible="false" active="true">
+			<tags />
+			<conditions>
+				<condition type="ObjectiveComplete" name="" operator="=" tag="true" value="2" />
+			</conditions>
+			<actions>
+				<action type="SetMusic" value="Castle Theme" screen="Countdown" channel="0" volume="1" />
+				<action type="MusicPlay" screen="Countdown" channel="0" />
+			</actions>
+		</event>
+		<event id="12" name="Music Stop on Reset" type="Single" mode="Any" color="0 0 0 255" gmvisible="false" active="true">
+			<tags />
+			<conditions>
+				<condition type="StoryState" name="" operator="=" tag="Resetting" value="0" />
+				<condition type="StoryState" name="" operator="=" tag="Ended" value="0" />
+				<condition type="StoryState" name="" operator="=" tag="Idle" value="0" />
+			</conditions>
+			<actions>
+				<action type="MusicStop" screen="Countdown" channel="0" />
+			</actions>
+		</event>
+	</events>
+	<values />
+</story>
