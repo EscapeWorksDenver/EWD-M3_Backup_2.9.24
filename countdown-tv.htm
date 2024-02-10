@@ -1,0 +1,524 @@
+<script type="text/javascript" src="js/filestore.js?[Server.LocalVersion]"></script>
+<script type="text/javascript">
+
+    var msgTimer;
+    var msgTimerText;
+    var msgTimerVideo;
+    var msgDelay = 20 * second;
+
+    var running = false;
+    var lastTimer = 60000;
+    var fontSize = 400;
+    var prologuePlayed = false;
+
+    var audioDiv;
+    var videoDiv;
+
+    var autoSize = true;
+
+    var timerHideOnIdle = false;
+    var timerHideOnZero = false;
+    var backgroundSource = "";
+    var backgroundVideo;
+    var backgroundIsVideo = false;
+    var backgroundLinkedToTimer = false;
+
+    onReset = function () {
+        // Default To Waiting
+        $("#story-running").show();
+        $("#countdown-area").show();
+        $("#message-video").hide();
+        prologuePlayed = false;
+        SetScreenStatus("Idle");
+    }
+
+    PanelResize = function () {
+
+        if (w_width > w_height) {
+            // Landscape
+            $("#message-video").width(w_width);
+            $("#message-video").height(w_height);
+            $("#video-background").width(w_width);
+            $("#video-background").height(w_height);
+        } else {
+            // Portrait
+            $("#message-video").width(w_width);
+            $("#message-video").height(w_height);
+            $("#video-background").width(w_width);
+            $("#video-background").height(w_height);
+        }
+
+        $("#noise").width(w_width);
+        $("#noise").height(w_height);
+
+        if (autoSize) {
+            // Font
+            fontSize = parseInt((w_height / 2));
+            if ((fontSize * 4) > w_width)
+                fontSize = w_width / 4;
+
+            $("#time-remaining").css("padding-top", parseInt((w_height / 2) - (fontSize / 2) - 80));
+            $("#time-remaining").css("font-size", fontSize + "px");
+        }
+
+    }
+
+    function SetVideoSource(target, source, cache) {
+        try {
+            if (cache == undefined) cache = true;
+
+            var video = $("#" + target)[0];
+
+            if (cache) {
+                promises.push(new Promise(function (completed, failed) {
+                    new FileStore(source, 'asset-progress').Store(function (url) {
+                        if (url) {
+                            video.src = url;
+                            //video.load();
+                        } else {
+                            if (video.src != source) {
+                                video.src = source;
+                                //video.load();
+                            } else {
+                                video.currentTime = 0;
+                            }
+                        }
+                    });
+                }));
+            } else {
+                if (video.src != source) {
+                    video.src = source;
+                    //video.load();
+                } else {
+                    video.currentTime = 0;
+                }
+            }
+        } catch (err) { console.log("SetVideoSource: " + err.message); }
+    }
+    function PlayVideo() {
+        try {
+            $("#message-video").fadeIn(1000, function () { });
+            if (!videoDiv.playing)
+                videoDiv.play();
+        } catch (err) { console.log("PlayVideo: " + err.message); }
+    }
+    function PauseVideo() {
+        try {
+            if (!videoDiv.paused) {
+                videoDiv.pause();
+            }
+        } catch (err) { console.log("PauseVideo: " + err.message); }
+    }
+    function StopVideo() {
+        try {
+            if (!videoDiv.paused)
+                videoDiv.pause();
+        } catch (err) { console.log("StopVideo: " + err.message); }
+    }
+    function ResetBackgroundVideo() {
+        try {
+            backgroundVideo.currentTime = 0;
+        } catch (err) { }
+    }
+    function SyncBackgroundVideo() {
+        try {
+            var time = (stories[storyID].Duration * 60) - (stories[storyID].Session.Timer / second).toFixed(2);
+            backgroundVideo.currentTime = time;
+        } catch (err) { }
+    }
+    function PlayBackgroundVideo() {
+        try {
+            if (!backgroundVideo.playing)
+                backgroundVideo.play();
+        } catch (err) { }
+    }
+    function PauseBackgroundVideo() {
+        try {
+            if (!backgroundVideo.paused)
+                backgroundVideo.pause();
+        } catch (err) { }
+    }
+    function StopBackgroundVideo() {
+        try {
+            if (!backgroundVideo.paused)
+                backgroundVideo.pause();
+        } catch (err) { }
+    }
+
+    function PlayAudio(src) {
+        try {
+            SetScreenStatus("Audio Playing");
+            $("#audio-source").attr("src", src);
+            audioDiv.load();
+            //audioDiv.play();
+        } catch (err) { }
+    }
+    function PauseAudio() {
+        try {
+            if (!audioDiv.paused)
+                audioDiv.pause();
+        } catch (err) { }
+    }
+
+    function CheckState() {
+        switch (stories[storyID].State) {
+            case "Prologue":
+                // Transition Areas
+                $("#story-idle").hide();
+                $("#story-running").show();
+                SetScreenStatus("Running");
+                SendCMD("STYST", "Running", storyID);
+                break;
+            case "Epilogue":
+                SetScreenStatus("Idle");
+                SendCMD("STYST", "Ended", storyID);
+                break;
+        }
+    }
+
+    function CheckEndState() {
+        switch (stories[storyID].State) {
+            case "Epilogue":
+                SetScreenStatus("Idle");
+                SendCMD("STYST", "Ended", storyID);
+                break;
+        }
+    }
+
+    function ClearMessages() {
+
+        try {
+            PauseAudio();
+            StopVideo();
+            $("#message-video").fadeOut(1000, function () { });
+
+            $("#message-text").fadeOut(1000, function () {
+                $("#message-text").html("");
+            });
+
+            $("#message-image").fadeOut(1000, function () {
+                $("#message-image").css("background-image", "");
+            });
+        } catch (err) { }
+
+        CheckState();
+    }
+
+    function SetStyles() {
+        if (!StoryIsSet()) return;
+
+        SetBackground(stories[storyID].Style.Background);
+        $("#local-styles").html(CreateStyles(storyID));
+
+        // Set Timer Hiding Prefs
+        timerHideOnIdle = stories[storyID].Style.HideTimerWhenIdle;
+        timerHideOnZero = stories[storyID].Style.HideTimerWhenZero;
+
+        // Timer
+        var timerStyle = stories[storyID].Style.Timer;
+        autoSize = !timerStyle.Override;
+        if (timerStyle.Override) {
+            $("#time-remaining").attr("style", "");
+            $("#time-remaining").removeClass("timer");
+            $("#time-remaining").addClass("custom-style-timer");
+        } else {
+            $("#time-remaining").addClass("timer");
+            $("#time-remaining").removeClass("custom-style-timer");
+        }
+
+        // Messages
+        var msgStyle = stories[storyID].Style.Messages;
+        if (msgStyle.Override) {
+            $("#message-text").attr("style", "");
+            $("#message-text").removeClass("message-text");
+            $("#message-text").addClass("custom-style-message");
+        } else {
+            $("#message-text").addClass("message-text");
+            $("#message-text").removeClass("custom-style-message");
+        }
+
+        // Clues
+        var clueStyle = stories[storyID].Style.Clues;
+        if (clueStyle.Override) {
+            $("#clues-area").attr("style", "");
+            $("#clues-area").removeClass("clues-area");
+            $("#clues-area").addClass("custom-style-clues");
+        } else {
+            $("#clues-area").addClass("clues-area");
+            $("#clues-area").removeClass("custom-style-clues");
+        }
+
+        // Resize
+        PanelResize();
+    }
+
+    function SetBackground(source) {
+        try {
+            var isNew = false;
+            if (backgroundSource != source) {
+                backgroundSource = source;
+                isNew = true;
+            }
+
+            if (source != "" && isNew) {
+                if (source.endsWith(".mp4")) {
+                    backgroundIsVideo = true;
+                    backgroundLinkedToTimer = stories[storyID].Style.BackgroundLinkedToTimer;
+
+                    SetVideoSource("video-background", source);
+                    $("#video-background").show();
+                    $("#countdown-area").css("background-image", "url('')");
+
+                    if (!backgroundLinkedToTimer) {
+                        PlayBackgroundVideo();
+                        backgroundVideo.loop = true;
+                    } else {
+                        backgroundVideo.loop = false;
+                    }
+
+                } else {
+                    $("#video-background").attr("src", "");
+                    $("#video-background").hide();
+                    $("#countdown-area").css("background-image", "url('" + source + "')");
+                    backgroundIsVideo = false;
+                    backgroundLinkedToTimer = false;
+                }
+            }
+        } catch (err) {
+            console.log("SetBackground: " + err.message);
+        }
+    }
+
+    $(document).ready(function () {
+
+        ShowTitlebar(false);
+        HideIdleMouse();
+
+        $("#noise").Noise();
+
+        audioDiv = $("#audio-player")[0];
+        videoDiv = $("#message-video")[0];
+        backgroundVideo = $("#video-background")[0];
+
+        $("#audio-player").on("ended", function (e) {
+            SetScreenStatus("Idle");
+            CheckState();
+        });
+        $("#message-video").on("ended", function (e) {
+            CheckState();
+            if (stories[storyID].Style.FadeVideos)
+                $("#message-video").fadeOut(1000, function () { });
+            else
+                Hide("#message-video");
+        });
+
+        videoDiv.addEventListener('loadeddata', function () {
+            PlayVideo();    // This is needed for Android 4.1+
+        }, false);
+        videoDiv.addEventListener('canplaythrough', function () {
+            PlayVideo();    // This is needed for Android 4.0 only
+        }, false);
+
+        $("#time-remaining").StoryTimer(storyID);
+
+        $(document).on("onStory", function (event) {
+            try {
+                SetStyles();
+                if (storyID != "")
+                    msgDelay = stories[storyID].Clues.Duration * second;
+            } catch (err) { }
+        });
+
+        $(document).on("onStoryState", function (event) {
+            if (StoryIsSet()) {
+
+                switch (stories[storyID].State) {
+                    case "Idle":
+                        prologuePlayed = false;
+                        $("#story-idle").show();
+                        $("#countdown-area").show();
+                        $("#message-text").hide();
+                        $("#message-video").hide();
+                        SetScreenStatus("Idle");
+
+                        if (stories[storyID].Style != undefined) {
+                            if (timerHideOnIdle)
+                                $("#time-remaining").hide();
+                            else
+                                $("#time-remaining").show();
+                        }
+                        PauseAudio();
+                        if (backgroundLinkedToTimer) {
+                            PauseBackgroundVideo();
+                            ResetBackgroundVideo();
+                        }
+                        break;
+                    case "Prologue":
+                        // Prologue
+                        if (!prologuePlayed) {
+                            SetScreenStatus("Playing Prologue");
+                            prologuePlayed = true;
+                        }
+                        $("#time-remaining").show();
+                        if (backgroundLinkedToTimer)
+                            PauseBackgroundVideo();
+                        break;
+                    case "Epilogue":
+                        // Epilogue
+                        if (timerHideOnZero && stories[storyID].Session.Timer <= 0)
+                            $("#time-remaining").hide();
+                        SetScreenStatus("Epilogue");
+                        running = false;
+                        if (backgroundLinkedToTimer)
+                            PauseBackgroundVideo();
+                        break;
+                    case "Paused":
+                        SetScreenStatus("Paused");
+                        if (backgroundLinkedToTimer)
+                            PauseBackgroundVideo();
+                        break;
+                    case "Ended":
+                        if (timerHideOnZero && stories[storyID].Session.Timer <= 0)
+                            $("#time-remaining").hide();
+                        SetScreenStatus("Ended");
+                        if (backgroundLinkedToTimer)
+                            PauseBackgroundVideo();
+                        break;
+                    default:
+                        // Stop Playing Video
+                        StopVideo();
+
+                        // Running
+                        SetScreenStatus("Running");
+                        $("#message-video").hide();
+                        $("#story-idle").hide();
+                        $("#story-running").show();
+                        $("#countdown-area").show();
+                        $("#time-remaining").show();
+
+                        if (backgroundLinkedToTimer) {
+                            SyncBackgroundVideo();
+                            PlayBackgroundVideo();
+                        }
+                        break;
+                }
+
+            } else {
+                running == false;
+                $("#time-remaining").text("00:00");
+            }
+        });
+
+        $(document).on("onStoryMessage", function (event, msg) {
+            switch (msg.Type) {
+                case "Text":
+                    clearTimeout(msgTimerText);
+
+                    // Clear Message?
+                    if (msg.Message == "") {
+                        ClearMessages();
+                        return;
+                    }
+
+                    if (stories[storyID].State == "Running") PlayChimeSound();
+                    $("#message-text").html(msg.Message);
+                    $("#message-text").fadeIn(1000, function () {
+                        msgTimerText = setTimeout(function () {
+                            $("#message-text").fadeOut(1000, function () {
+                                $("#message-text").html("");
+                                CheckState();
+                            });
+                        }, msg.Duration);
+                    });
+                    break;
+                case "Image":
+                    clearTimeout(msgTimer);
+                    if (stories[storyID].State == "Running") PlayChimeSound();
+                    $("#message-text").hide();
+                    $("#message-image").css("background-image", "url('" + msg.Source + "')");
+                    $("#message-image").fadeIn(1000, function () {
+                        msgTimer = setTimeout(function () {
+                            $("#message-image").fadeOut(1000, function () {
+                                $("#message-image").css("background-image", "");
+                                CheckState();
+                            });
+                        }, msg.Duration);
+                    });
+                    break;
+                case "Audio":
+                    PlayAudio(msg.Source);
+                    break;
+                case "Video":
+                    SetVideoSource("message-video", msg.Source);
+                    $("#message-text").hide();
+                    break;
+            }
+        });
+
+        $(document).on("onTimer", function () {
+            try {
+                if (backgroundIsVideo && backgroundLinkedToTimer) {
+                    if (stories[storyID].State == "Idle" || stories[storyID].State == "Running" || stories[storyID].State == "Paused") {
+                        if ((lastTimer - stories[storyID].Session.Timer) > (second * 30)) {
+                            SyncBackgroundVideo();
+                        }
+                    }
+                }
+
+                lastTimer = stories[storyID].Session.Timer;
+            } catch (err) { }
+        });
+
+        $(document).on("onClues", function () {
+            $("#clues-area").html(SessionClues(storyID));
+        });
+
+        $(document).on("onBackground", function (event, value) {
+            SetBackground(value);
+        });
+
+        InitFileSystem(function (fileSystem) {
+            window.fileSystem = fileSystem;
+        });
+
+    });
+
+</script>
+<style>
+    #time-remaining {
+        font-family: 'Times New Roman', Times, serif;
+    }
+    #clues-area {
+        text-align: center;
+        left: 30px;
+    }
+    .message-text {
+        left: 150px;
+        right: 150px;
+        bottom: 200px;
+    }
+    #noise {
+        z-index: 490;
+    }
+</style>
+<div id="countdown-body" onclick="ToggleFullScreen()">
+    <div id="asset-progress"></div>
+    <div class="crt-bw fullscreen"></div>
+    <video id="video-background" width="320" height="240" preload="auto" playsinline loop class="fullscreen hidden"></video>
+    <div id="message-text" class="message-text hidden"></div>
+    <div id="message-image" class="hidden"></div>
+    <video id="message-video" width="320" height="240" preload="auto" autoplay playsinline class="fullscreen hidden" onclick="PlayVideo()"></video>
+    <div id="story-offline" class="hidden"></div>
+    <div id="story-idle" class="hidden">
+        <canvas id="noise" height="320" width="320" class="fullscreen"></canvas>
+    </div>
+    <div id="story-running" class="centered">
+        <div id="countdown-area">
+            <div id="time-remaining" class="timer"></div>
+        </div>
+        <div id="clues-area" class="clues-area"></div>
+    </div>
+    <audio id="audio-player" autoplay>
+        <source id="audio-source" src="" />
+    </audio>
+</div>
